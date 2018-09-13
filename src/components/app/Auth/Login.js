@@ -74,10 +74,6 @@ class Login extends Component {
         }
     };
 
-    getUser = () => {
-        console.log(sessionStorage.getItem('user'))
-    };
-
     render() {
         return (
             <div className="w-50 m-auto text-center">

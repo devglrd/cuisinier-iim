@@ -38,17 +38,12 @@ class Auth extends Component {
     }
 
     isConnect = () => {
-        const user = sessionStorage.getItem("user");
-        console.log("IS connected ", user);
-        if (user) {
-            this.setState({ user: JSON.parse(user) });
-            return;
-        }
+        this.props.check();
     }
 
     render() {
         let renderAuth;
-        if(this.state.user === null){
+        if(this.props.user === null){
             if (this.state.auth === "login") {
                 renderAuth = (<Login userConnected={this.isConnect} />);
             } else if (this.state.auth === "register") {

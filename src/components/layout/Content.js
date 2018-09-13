@@ -8,10 +8,8 @@ class Content extends Component {
 
     render() {
         return (
-            <div className="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
-                <Header/>
+            <div>
                 {this.props.children}
-                <Footer/>
             </div>
         );
     }

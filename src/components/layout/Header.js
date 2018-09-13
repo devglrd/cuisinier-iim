@@ -9,26 +9,21 @@ class Header extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {
-            user: null
-        }
     }
 
     componentDidMount (){
-        const user = sessionStorage.getItem('user');
-        if (user){
-            this.setState({
-                user : user
-            });
-        }
     }
 
     render() {
         let renderNavbar;
-        if (this.state.user != null){
-            renderNavbar = (<div className="d-flex ml-3"><Link to={`/auth/logout`} component={Auth} className="nav-link">Logout</Link><Link to={`/app`} component={Main}  className="nav-link">
+        if (this.props.auth){
+            renderNavbar = (<div className="d-flex ml-3">
+
+            <Link to={`/app`} component={Main}  className="nav-link">
                 Cuistosearch
-            </Link></div>)
+            </Link>
+            <div className="nav-link" onClick={this.props.disconnect}>Logout</div>
+            </div>)
         } else{
             renderNavbar = (<Link to={`/auth/login`} component={Auth} className="nav-link">login</Link>)
         }
