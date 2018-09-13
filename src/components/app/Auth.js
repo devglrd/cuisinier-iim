@@ -9,7 +9,8 @@ class Auth extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            auth: "login"
+            auth: "login",
+            user: null
         }
     }
 
@@ -36,12 +37,25 @@ class Auth extends Component {
         }
     }
 
+    isConnect = () => {
+        const user = sessionStorage.getItem("user");
+        console.log("IS connected ", user);
+        if (user) {
+            this.setState({ user: JSON.parse(user) });
+            return;
+        }
+    }
+
     render() {
         let renderAuth;
-        if (this.state.auth === "login") {
-            renderAuth = (<Login />);
-        } else if (this.state.auth === "register") {
-            renderAuth = (<Register />);
+        if(this.state.user === null){
+            if (this.state.auth === "login") {
+                renderAuth = (<Login userConnected={this.isConnect} />);
+            } else if (this.state.auth === "register") {
+                renderAuth = (<Register />);
+            }
+        }else{
+            renderAuth = (<p>Connected !</p>)
         }
         return (
             <div className="container">

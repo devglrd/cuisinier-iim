@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import {Button, Container, Icon} from "semantic-ui-react";
+
 import {Link} from "react-router-dom";
 import Auth from '../app/Auth';
 import Main from '../app/Main';
@@ -27,7 +27,7 @@ class Header extends Component {
         let renderNavbar;
         if (this.state.user != null){
             renderNavbar = (<div className="d-flex ml-3"><Link to={`/auth/logout`} component={Auth} className="nav-link">Logout</Link><Link to={`/app`} component={Main}  className="nav-link">
-                Application
+                Cuistosearch
             </Link></div>)
         } else{
             renderNavbar = (<Link to={`/auth/login`} component={Auth} className="nav-link">login</Link>)
@@ -35,10 +35,10 @@ class Header extends Component {
         return (
             <header className="masthead mb-auto container">
                 <div className="inner">
-                    <h3 className="masthead-brand">Application React</h3>
+                    <h3 className="masthead-brand">Cuistosearch</h3>
                     <nav className="nav nav-masthead justify-content-center">
                         <Link to={`/`} component={Home} className="nav-link">
-                            Accueil
+                           Acceuil 
                         </Link>
                         {renderNavbar}
                     </nav>

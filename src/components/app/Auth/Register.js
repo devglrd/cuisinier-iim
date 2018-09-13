@@ -11,7 +11,8 @@ class Register extends Component {
             name: null,
             email: null,
             password: null,
-            confirm_password: null
+            confirm_password: null,
+            flashMessage : null
         }
     }
 
@@ -37,7 +38,7 @@ class Register extends Component {
     };
 
     login = () => {
-        let url = "http://127.0.0.1:8000/api/register";
+        let url = "http://127.0.0.1:3002/api/register";
         let data = {
             name : this.state.name,
             email : this.state.email,
@@ -46,6 +47,15 @@ class Register extends Component {
         };
         api.post(url, data).then(res => {
             console.log(res)
+            if(res.data.result.insertId){
+                this.setState({
+                    name: null,
+                    email: null,
+                    password: null,
+                    confirm_password: null,
+                    flashMessage : "Votre compte à bien été crée, connectez vous."
+                })
+            }
         })
     };
 
@@ -73,6 +83,7 @@ class Register extends Component {
                     <input onChange={this.handleInput.bind(this)} type="password" name="confirm_password" className="form-control"
                            placeholder="Password" required/>
                 </div>
+                <span className="fz-10 text-success">{this.state.flashMessage}</span>
                 <button className="btn btn-lg btn-primary btn-block mb-3" data-link="register" onClick={this.login}>S'inscire
                 </button>
                 <Link to={`/auth/login`} component={Auth} className="cursor">

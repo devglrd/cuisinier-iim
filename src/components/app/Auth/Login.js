@@ -11,16 +11,17 @@ class Login extends Component {
             email: null,
             password: null,
             flashError: null,
+            flashSucces : null,
             user : {}
         }
     }
 
     componentDidMount(){
-        const user = sessionStorage.getItem("user");
+        /*const user = sessionStorage.getItem("user");
         if (user) {
             this.setState({ user: JSON.parse(user) });
             return;
-        }
+        }*/
     }
 
 
@@ -52,17 +53,22 @@ class Login extends Component {
                 password: this.state.password
             };
             api.post(url, data).then(res => {
-                console.log(res);
                 if (res.data.error){
                     this.setState({
                         flashError : res.data.error
                     })
                 } else{
+                    if (res.data.success){
+                        this.setState({
+                            flashSucces : res.data.success
+                        })
+                    }
                     console.log(res.data);
                     this.setState({
                         user : res.data.user
                     });
                     sessionStorage.setItem("user", JSON.stringify(res.data.user));
+                    this.props.userConnected()
                 }
             })
         }
@@ -76,7 +82,6 @@ class Login extends Component {
         return (
             <div className="w-50 m-auto text-center">
                 <h1 className="h3 mb-3 font-weight-normal">Connectez vous</h1>
-                <h1 className="h3 mb-3 font-weight-normal" onClick={this.getUser}>User</h1>
                 <div className="form-group">
                     <label htmlFor="inputEmail" className="sr-only">Email address</label>
                     <input type="email" name="email" className="form-control" placeholder="Email address"
@@ -92,6 +97,8 @@ class Login extends Component {
                 </button>
                 <div className="d-flex flex-column justify-content-center align-content-center">
                     <span className="fz-8 text-danger">{this.state.flashError}</span>
+                    <span className="fz-8 text-success">{this.state.flashSucces}</span>
+                    
                     <Link to={`/auth/register`} component={Auth} className="cursor">
                         S'inscrire
                     </Link>
