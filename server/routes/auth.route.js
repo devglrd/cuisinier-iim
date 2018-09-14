@@ -1,7 +1,7 @@
 import { Router } from "express";
 import db from "../db/config";
 import User from "../models/Users";
-import bcrypt from "bcrypt";
+import bcrypt from "bcrypt-nodejs";
 
 const router = new Router();
 const user = new User;

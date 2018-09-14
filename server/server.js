@@ -5,7 +5,7 @@ import db from "./db/config.js"
 import usersRoute from "./routes/users.route";
 import authRoutes from "./routes/auth.route"
 import User from "./models/Users";
-import bcrypt from "bcrypt";
+import bcrypt from "bcrypt-nodejs";
 let app = express();
 const PORT = 3002;
 
