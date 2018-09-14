@@ -28,12 +28,12 @@ class Home extends Component {
             <Link to={`/auth/register`} component={Auth} className="btn btn-lg btn-secondary">
                 S'inscrire
             </Link>);
-            
+
         }
         return (
-            <main role="main" className="inner cover container">
-                <h1 className="cover-heading">Ne vous souciez plus jamais de na pas savoir quoi manger.</h1>
-                <p className="lead"><span style={{color: "yellow"}}>CuistoSearch</span> est une plate-forme de recherche de cuisinier. Notre but et de mettre en relation des cuisiner et de particulier</p>
+            <main role="main" className="container d-flex flex-column justify-content-center align-content-center">
+                <h1 className="cover-heading">Ne vous souciez plus jamais de ne pas savoir quoi manger.</h1>
+                <p className="lead"><span className="custom-span font-weight-bold">CuistoSearch</span> est une plate-forme de recherche de cuisinier. Notre but et de mettre en relation des cuisiner et de particulier</p>
                 <p className="lead">
                     {renderRegister}
                 </p>

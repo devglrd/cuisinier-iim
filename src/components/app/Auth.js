@@ -37,6 +37,10 @@ class Auth extends Component {
         }
     }
 
+    redirect = () => {
+        window.location.href = "http://localhost:3003/";
+    }
+
     isConnect = () => {
         this.props.check();
     }
@@ -50,16 +54,18 @@ class Auth extends Component {
                 renderAuth = (<Register />);
             }
         }else{
-            renderAuth = (<p>Connected !</p>)
+            renderAuth = (<p className="text-success">Vous êtes connectée !</p>)
         }
         return (
-            <div className="container">
-                <div className="row">
-                    <div className="col d-flex justify-content-center">
-                        {renderAuth}
+            <section className="auth">
+                <div className="container">
+                    <div className="row">
+                        <div className="col d-flex justify-content-center">
+                            {renderAuth}
+                        </div>
                     </div>
                 </div>
-            </div>
+            </section>
         );
     }
 }

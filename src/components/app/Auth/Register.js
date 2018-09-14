@@ -86,7 +86,7 @@ class Register extends Component {
                 <span className="fz-10 text-success">{this.state.flashMessage}</span>
                 <button className="btn btn-lg btn-primary btn-block mb-3" data-link="register" onClick={this.login}>S'inscire
                 </button>
-                <Link to={`/auth/login`} component={Auth} className="cursor">
+                <Link to={`/auth/login`} component={Auth} className="cursor text-black">
                     Se connecter
                 </Link>
             </div>

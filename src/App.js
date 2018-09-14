@@ -1,35 +1,38 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import Content from "./components/layout/Content";
 import Header from "./components/layout/Header";
 import Footer from "./components/layout/Footer";
 import Auth from "./components/app/Auth";
 import Main from "./components/app/Main";
 import Home from "./components/app/Home";
+import Acccount from "./components/app/Account";
 import {BrowserRouter, Route, Switch} from "react-router-dom";
 
 class App extends Component {
 
-    constructor(props){
+    constructor(props) {
         super(props);
         this.state = {
             auth: false,
-            user: null
+            user: null,
+            app: false
         }
     }
 
-    componentWillMount(){
-        const user = sessionStorage.getItem("user");
-        console.log("connectedo on APP componeent", user);
-        if (user) {
-            this.setState({ 
-                user: JSON.parse(user),
-                auth : true
-            });
-        }else{
-            this.setState({ 
-                user: null,
-                auth : false
-            });
+    componentWillMount() {
+        if (this.state.user === null) {
+            const user = sessionStorage.getItem("user");
+            if (user) {
+                this.setState({
+                    user: JSON.parse(user),
+                    auth: true
+                });
+            } else {
+                this.setState({
+                    user: null,
+                    auth: false
+                });
+            }
         }
     }
 
@@ -37,9 +40,9 @@ class App extends Component {
         const user = sessionStorage.getItem("user");
         console.log("connectedo on APP componeent", user);
         if (user) {
-            this.setState({ 
+            this.setState({
                 user: JSON.parse(user),
-                auth : true
+                auth: true
             });
         }
     }
@@ -48,27 +51,27 @@ class App extends Component {
         sessionStorage.removeItem("user");
         this.setState({
             user: null,
-            auth : false
+            auth: false
         })
     }
 
-  render() {
-    return (
-        <BrowserRouter>
-            <div className="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
-                <Header auth={this.state.auth} user={this.state.user} disconnect={this.disconnected}/>
-                <Content>
-                    <Switch>
-                        <Route exact path="/" render={(props) => <Home {...props} user={this.state.user} auth={this.state.auth} />}/>
-                        <Route path="/auth/:auth" render={(props) => <Auth {...props} user={this.state.user} check={this.connected} auth={this.state.auth} />}/>
-                        <Route path="/app" render={(props) => <Main {...props} user={this.state.user} auth={this.state.auth} />}/>
-                    </Switch>
-                </Content>
-                <Footer />
-            </div>
-        </BrowserRouter>
-    );
-  }
+    render() {
+        return (
+            <BrowserRouter>
+                <div className="cover-container d-flex w-100 h-100 mx-auto flex-column">
+                    <Header auth={this.state.auth} user={this.state.user} disconnect={this.disconnected}/>
+                    <Content>
+                        <Switch>
+                            <Route exact path="/" render={(props) => <Home {...props} user={this.state.user} auth={this.state.auth}/>}/>
+                            <Route path="/auth/:auth" render={(props) => <Auth {...props} user={this.state.user} check={this.connected} auth={this.state.auth}/>}/>
+                            <Route path="/app" render={(props) => <Main {...props} disconnected={this.disconnected} user={this.state.user} auth={this.state.auth}/>}/>
+                        </Switch>
+                    </Content>
+                    <Footer/>
+                </div>
+            </BrowserRouter>
+        );
+    }
 }
 
 export default App;

@@ -6,8 +6,7 @@ class Footer extends Component {
         return (
             <footer className="mastfoot mt-auto d-flex justify-content-center">
                 <div className="inner">
-                    <p>Boiler template for React, by <a
-                        href="https://twitter.com/">@devglrd</a>.</p>
+                    <p>Cuistosearch</p>
                 </div>
             </footer>
         );

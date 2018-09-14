@@ -95,7 +95,7 @@ class Login extends Component {
                     <span className="fz-8 text-danger">{this.state.flashError}</span>
                     <span className="fz-8 text-success">{this.state.flashSucces}</span>
                     
-                    <Link to={`/auth/register`} component={Auth} className="cursor">
+                    <Link to={`/auth/register`} component={Auth} className="cursor text-black">
                         S'inscrire
                     </Link>
                 </div>
