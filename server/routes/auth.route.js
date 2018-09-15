@@ -35,15 +35,18 @@ router.post('/login', (req, res) => {
         if (err) {
             console.log(err);
             res.status(200).send({"error": "A error as occured "})
+            return;
         }
         if (result === [] || !result || result.length === 0) {
-            res.status(500).json({"error": "A error as occured "})
+            res.status(500).json({"error": "A error as occured "});
+            return;
         }
         console.log(result);
         bcrypt.compare(req.body.password, result[0].password, (error, resulta) => {
             if (error) {
                 console.log(error);
-                res.status(200).send({"error": "A error as occured "})
+                res.status(200).send({"error": "A error as occured "});
+                return;
             }
             if (resulta === true) {
                 console.log("ok");
