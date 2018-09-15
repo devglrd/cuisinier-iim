@@ -38,7 +38,7 @@ router.post('/login', (req, res) => {
             return;
         }
         if (result === [] || !result || result.length === 0) {
-            res.status(500).json({"error": "A error as occured no email in db"});
+            res.status(200).json({"error": "A error as occured no email in db"});
             return;
         }
         console.log(result);
