@@ -32,13 +32,19 @@ router.post('/login', (req, res) => {
     console.log(req.body);
 
     db.query(user.getWhere("email", req.body.email), (err, result) => {
-        if (err) console.log(err);
+        if (err) {
+            console.log(err);
+            res.status(200).send({"error": "A error as occured "})
+        }
         if (result === [] || !result || result.length === 0) {
             res.status(500).json({"error": "A error as occured "})
         }
         console.log(result);
         bcrypt.compare(req.body.password, result[0].password, (error, resulta) => {
-            if (error) console.log(error);
+            if (error) {
+                console.log(error);
+                res.status(200).send({"error": "A error as occured "})
+            }
             if (resulta === true) {
                 console.log("ok");
                 res.status(200).json({"success": "Connectée !", "user": result[0]})
