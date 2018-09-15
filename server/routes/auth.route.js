@@ -14,19 +14,15 @@ router.post('/login', (req, res) => {
     db.query(user.getWhere("email", req.body.email), (err, result) => {
         if (err) console.log(err);
 
-        let has = bcrypt.compare(req.body.password, result[0].password);
-        if (has){
+        bcrypt.compare(req.body.password, result[0].password, (error, resulta) => {
+            if (error) console.log(error);
             if (resulta === true) {
                 res.status(200).json({"success": "Connectée !", "user": result[0]})
             }
-        } else{
-            if (error) console.log("Bad credential");
-        }
-
+        });
     })
 
-})
-;
+});
 
 router.post('/register', (req, res) => {
     if (req.body.password !== req.body.confirm_password) {
