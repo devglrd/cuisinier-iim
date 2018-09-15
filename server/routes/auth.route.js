@@ -51,6 +51,9 @@ router.post('/login', (req, res) => {
             if (resulta === true) {
                 console.log("ok");
                 res.status(200).json({"success": "Connectée !", "user": result[0]})
+            }else{
+                console.log(error);
+                res.status(200).send({"error": "Wrong password"});
             }
         });
     })
