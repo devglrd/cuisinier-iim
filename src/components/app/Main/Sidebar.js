@@ -4,6 +4,7 @@ import message from "../../../assets/img/message.png";
 import {Link} from "react-router-dom";
 
 import Auth from "../Auth";
+import Account from "../Account";
 const Sidebar = (props) => (
     <div className="sidebar">
         <ul>
@@ -18,14 +19,15 @@ const Sidebar = (props) => (
             </li>
             <li className="sep"></li>
             <li>
-                <a href="/profile" className=" link account ">{props.user.name}</a>
+                <Link to={`/app/profile/${props.user.name}`} component={Account} className="cursor link lookup ">
+                    {props.user.name}
+                </Link>
             </li>
             <li>
-
                 <a className=" link support ">Support</a>
             </li>
             <li>
-                <a href="/logout" onClick={props.disconnected} className="link logout">Deconnection</a>
+                <a href="/logout" onClick={props.disconnected} className="link logout">déconnexion</a>
             </li>
         </ul>
     </div>

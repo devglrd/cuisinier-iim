@@ -46,7 +46,7 @@ class Register extends Component {
             confirm_password : this.state.confirm_password,
         };
         api.post(url, data).then(res => {
-            console.log(res)
+            console.log(res);
             if(res.data.result.insertId){
                 this.setState({
                     name: null,
@@ -54,6 +54,10 @@ class Register extends Component {
                     password: null,
                     confirm_password: null,
                     flashMessage : "Votre compte à bien été crée, connectez vous."
+                })
+            }else{
+                this.setState({
+                    flashMessage : res.data.error
                 })
             }
         })

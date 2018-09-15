@@ -11,12 +11,12 @@ class Login extends Component {
             email: null,
             password: null,
             flashError: null,
-            flashSucces : null,
-            user : {}
+            flashSucces: null,
+            user: {}
         }
     }
 
-    componentDidMount(){
+    componentDidMount() {
         /*const user = sessionStorage.getItem("user");
         if (user) {
             this.setState({ user: JSON.parse(user) });
@@ -39,7 +39,7 @@ class Login extends Component {
 
 
     login = () => {
-        if (this.state.password === null|| this.state.email === null) {
+        if (this.state.password === null || this.state.email === null) {
             this.setState({
                 flashError: "Vous devez renseigner votre email et votre mot de passe"
             })
@@ -48,24 +48,29 @@ class Login extends Component {
                 flashError: null
             });
             let url = "http://104.248.22.184:3002/api/login";
+            // let url = "http://127.0.0.1:3002/api/login";
             let data = {
                 email: this.state.email,
                 password: this.state.password
             };
             api.post(url, data).then(res => {
-                if (res.data.error){
+                if (res.data.error) {
                     this.setState({
-                        flashError : res.data.error
+                        flashError: res.data.error
                     })
-                } else{
-                    if (res.data.success){
+                } else {
+                    if (res.data.success) {
                         this.setState({
-                            flashSucces : res.data.success
+                            flashSucces: res.data.success
+                        })
+                    } else if (res.data.error) {
+                        this.setState({
+                            flashError: res.data.error
                         })
                     }
                     console.log(res.data);
                     this.setState({
-                        user : res.data.user
+                        user: res.data.user
                     });
                     sessionStorage.setItem("user", JSON.stringify(res.data.user));
                     this.props.userConnected()
