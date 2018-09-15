@@ -37,8 +37,8 @@ class Register extends Component {
         }
     };
 
-    login = () => {
-        let url = "http://127.0.0.1:3002/api/register";
+    register = () => {
+        let url = "http://104.248.22.184:3002/api/register";
         let data = {
             name : this.state.name,
             email : this.state.email,
@@ -84,7 +84,7 @@ class Register extends Component {
                            placeholder="Password" required/>
                 </div>
                 <span className="fz-10 text-success">{this.state.flashMessage}</span>
-                <button className="btn btn-lg btn-primary btn-block mb-3" data-link="register" onClick={this.login}>S'inscire
+                <button className="btn btn-lg btn-primary btn-block mb-3" data-link="register" onClick={this.register}>S'inscire
                 </button>
                 <Link to={`/auth/login`} component={Auth} className="cursor text-black">
                     Se connecter

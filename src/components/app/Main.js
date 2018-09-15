@@ -33,7 +33,8 @@ class Main extends Component {
             return;
         }
 
-        let url = `http://127.0.0.1:3002/api/users/search/${this.state.search}`;
+
+        let url = `http://104.248.22.184:3002/api/users/search/${this.state.search}`;
         api.get(url).then(res => {
             console.log(res);
             if(res.data.result){

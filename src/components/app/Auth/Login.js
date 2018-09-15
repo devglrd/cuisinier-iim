@@ -47,7 +47,7 @@ class Login extends Component {
             this.setState({
                 flashError: null
             });
-            let url = "http://127.0.0.1:3002/api/login";
+            let url = "http://104.248.22.184:3002/api/login";
             let data = {
                 email: this.state.email,
                 password: this.state.password
@@ -94,7 +94,7 @@ class Login extends Component {
                 <div className="d-flex flex-column justify-content-center align-content-center">
                     <span className="fz-8 text-danger">{this.state.flashError}</span>
                     <span className="fz-8 text-success">{this.state.flashSucces}</span>
-                    
+
                     <Link to={`/auth/register`} component={Auth} className="cursor text-black">
                         S'inscrire
                     </Link>
