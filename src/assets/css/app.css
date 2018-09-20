@@ -6813,6 +6813,12 @@ body #root {
       margin-top: 0 !important;
       padding: 10px 9px !important; }
 
+.show {
+  display: block; }
+
+a.active {
+  color: #279aff !important; }
+
 .expand-datas {
   padding: 10px 40px;
   display: block;

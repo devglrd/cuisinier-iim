@@ -44,8 +44,8 @@ const Card = (props) => (
                 </li>
             </ul>
         </div>
-        <div className="expand-datas cursor"><a className="expand">Afficher les données complètes du cuisnier</a></div>
-        <div className="expand-datas cursor"><a className="expand">Prendre contact</a></div>
+        <div className="expand-datas cursor" onClick={props.showModal}><a  className="expand">Afficher les données complètes du cuisnier</a></div>
+        <div className="expand-datas cursor"  onClick={props.showContactModal}><a className="expand">Prendre contact</a></div>
     </div>
 )
 

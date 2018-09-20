@@ -5,21 +5,24 @@ import {Link} from "react-router-dom";
 
 import Auth from "../Auth";
 import Account from "../Account";
+import Main from "../Main";
 const Sidebar = (props) => (
     <div className="sidebar">
         <ul>
             <li>
-                <a className=" cursor link integrate "><img className="mr-1" width="18px" src={search} alt=""/>Recherche</a>
+                <Link to={`/app`} component={Main} className={`cursor link lookup ${props.active === "search" ? "active" : ""}`}>
+                    <img className="mr-1" width="18px" src={search} alt=""/>Recherche
+                </Link>
             </li>
             <li>
-                <Link to={`/app/message`} component={Auth} className="cursor link lookup ">
+                <Link to={`/app/my/message`} component={Auth} className={`cursor link lookup ${props.active === "message" ? "active" : ""}`}>
                     <img className="mr-1" width="18px" src={message} alt=""/>Message
                 </Link>
                 {/*<a className=" cursor link lookup  active"></a>*/}
             </li>
             <li className="sep"></li>
             <li>
-                <Link to={`/app/profile/${props.user.name}`} component={Account} className="cursor link lookup ">
+                <Link to={`/app/profile/${props.user.name}`} component={Account} className={`cursor link lookup ${props.active === "profile" ? "active" : ""}`}>
                     {props.user.name}
                 </Link>
             </li>

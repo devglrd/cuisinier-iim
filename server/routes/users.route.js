@@ -34,6 +34,16 @@ router.delete('/:id', (req, res) => {
 });
 
 
+router.post('/update', (req, res) => {
+    const sql = `UPDATE users SET name = "${req.body.name}", email = "${req.body.email}", adresse = "${req.body.adresse}", tarif = "${req.body.tarif}" WHERE id = ${req.body.id}`;
+    db.query(sql, (err, result) => {
+        if(err) console.log(err);
+        res.status(200).json({result})
+    })
+});
+
+
+
 router.get('/search/:name', (req, res) => {
     if (!(req.params.name)){
         res.status(200).json({"error" : "Passez une chaine de caractère svp"})

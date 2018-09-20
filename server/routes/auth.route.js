@@ -25,6 +25,10 @@ router.post('/test', (req,res) => {
     });
 });
 
+
+
+
+
 router.post('/login', (req, res) => {
     if (!req.body.email || !req.body.password) {
         res.status(500).json({"error": "No email or password "})

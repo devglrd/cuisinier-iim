@@ -42,6 +42,14 @@ body {
     }
 }
 
+.show{
+    display: block;
+}
+
+a.active{
+    color: #279aff !important;
+}
+
 .expand-datas {
     padding: 10px 40px;
     display: block;

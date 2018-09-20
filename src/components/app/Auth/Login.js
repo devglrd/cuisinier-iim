@@ -75,6 +75,8 @@ class Login extends Component {
                     sessionStorage.setItem("user", JSON.stringify(res.data.user));
                     this.props.userConnected()
                 }
+            }).catch(err => {
+                console.log(err);
             })
         }
     };

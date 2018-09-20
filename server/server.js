@@ -4,13 +4,14 @@ import cors from "cors";
 import db from "./db/config.js"
 import usersRoute from "./routes/users.route";
 import authRoutes from "./routes/auth.route"
+import messageRoutes from "./routes/message.route"
 import User from "./models/Users";
 import bcrypt from "bcrypt-nodejs";
 let app = express();
 const PORT = 3002;
 
 db.connect((err) => {
-    if (err) console.log(`Erreur ${err}`)
+    if (err) console.log(`Erreur on connection :  ${err}`);
     console.log("Database connected");
 });
 
@@ -22,6 +23,7 @@ app.use(cors());
 //users routes
 app.use('/api', authRoutes);
 app.use('/api/users', usersRoute);
+app.use('/api/messages', messageRoutes);
 
 app.listen(PORT, () => {
     console.log(`conected on port ${PORT}`);
