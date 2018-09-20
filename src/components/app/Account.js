@@ -17,7 +17,7 @@ class Account extends Component {
 
 
     modifyAccount = () => {
-        let url = `http://127.0.0.1:3002/api/users/update`;
+        let url = `http://104.248.22.184:3002/api/users/update`;
         let data = {
             name: this.state.name,
             email: this.state.email,

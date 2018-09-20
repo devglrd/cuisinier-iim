@@ -11,7 +11,7 @@ class CardMessage extends Component {
     }
 
     componentWillMount() {
-        let url = `http://127.0.0.1:3002/api/users/${this.props.recever}`;
+        let url = `http://104.248.22.184:3002/api/users/${this.props.recever}`;
         api.get(url).then(res => {
                 console.log(res)
             if (res.data.result) {

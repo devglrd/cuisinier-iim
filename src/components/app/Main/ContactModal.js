@@ -20,7 +20,7 @@ class ContactModal extends Component {
 
     sendMessage = () => {
         // let url = `http://104.248.22.184:3002/api/messages`;
-        let url = `http://127.0.0.1:3002/api/messages`;
+        let url = `http://104.248.22.184:3002/api/messages`;
         let data = {
             fk_sender_id : this.props.user.id,
             fk_recevers_id : this.props.modal.id,

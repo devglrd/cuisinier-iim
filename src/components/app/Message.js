@@ -15,7 +15,7 @@ class Message extends Component {
 
     componentWillMount() {
         console.log("jey !", this.props.user.id);
-        let url = `http://127.0.0.1:3002/api/messages/users/${this.props.user.id}`;
+        let url = `http://104.248.22.184:3002/api/messages/users/${this.props.user.id}`;
         api.get(url).then(res => {
             if (res.data.result) {
                 this.setState({
